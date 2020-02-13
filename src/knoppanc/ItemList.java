@@ -29,11 +29,11 @@ public class ItemList {
         //if find item equals -1 means there already and item with that size
         //therefore add the base cost to the existing item base cost.
         double aux = 0.0;
-        if (findItem(item) == -1) {
+        if (findItem(item.itemSize) == -1) {
             //Sums the basecost of the item with the new basecost for the
             //same size
-            aux = item.getBaseCost() + item.getItemCost();
-            item.setBaseCost(aux);
+            aux = item.getBaseCost();
+            //item.setBaseCost(aux);
         }
         itemList.add(item);
     }
@@ -58,18 +58,17 @@ public class ItemList {
         //size
         for (int i = 0; i < itemList.size(); i++) {
             //code to check with the item is in the array list
-            if (itemList.contains(size)) {
+
+            if (itemList.get(i).itemSize.equals(size)) {
                 return itemList.indexOf(i);
-            }
-            
-            if (itemList.get(i).itemSize.getSizeName().equals(size)) {
-                
             }
         }
         
         //return -1 if no size was found
         return -1;
     }
+    
+    //findItem();
     
     public int lenght(){
         return itemList.size();

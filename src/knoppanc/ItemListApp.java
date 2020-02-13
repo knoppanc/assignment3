@@ -22,10 +22,9 @@ public class ItemListApp {
         //crate an ArrayList
         ArrayList<Item> products = new ArrayList<>();
         //add elements in the shapes ArrayList
-//        products.add(new Item(Size.M, 1000));
-//        products.add(new Item(Size.L, 6.7));
-//        
-//        System.out.println(products.size());
+        products.add(new Item(Size.M, 1000));
+        products.add(new Item(Size.L, 6.7));
+        
         
         Scanner input = new Scanner(System.in);
         String sizeIn = "";
