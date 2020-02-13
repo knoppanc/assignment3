@@ -28,12 +28,12 @@ public class ItemList {
     public void add(Item item){
         //if find item equals -1 means there already and item with that size
         //therefore add the base cost to the existing item base cost.
-        double aux = 0.0;
+        double aux = item.getBaseCost();
         if (findItem(item.itemSize) == -1) {
             //Sums the basecost of the item with the new basecost for the
             //same size
-            aux = item.getBaseCost();
-            //item.setBaseCost(aux);
+            //aux = itemList.get(item).getBaseCost() + item.getBaseCost();
+            item.setBaseCost(aux);
         }
         itemList.add(item);
     }
