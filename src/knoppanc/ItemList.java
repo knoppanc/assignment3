@@ -1,8 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*Name:  Jonathan Knopp Anchieta
+*Assignment:  Assignment 3
+*Program: PROG24178 Object Oriented Programming 2 Java
+*Date:  Feb 14, 2020.
+*   
+*Description:
+*Array list class called itemList, if creates the methods to manipulate the
+* array list and perform checks.
+*
+*/
 package knoppanc;
 
 import java.util.*;
@@ -25,6 +31,13 @@ public class ItemList {
         return itemList.get(index);
     }
     
+    /**
+     * Add method to add an item to the list, it also checks using the findItem
+     * method if there is already an item with the same side inse the list.
+     * If there is it adds the base cost of the new item with the existing
+     * item.
+     * @param item 
+     */
     public void add(Item item){
         //if find item equals -1 means there already and item with that size
         //therefore add the base cost to the existing item base cost.
@@ -32,8 +45,6 @@ public class ItemList {
         if (findItem(item.itemSize) >=0) {
             //Sums the basecost of the item with the new basecost for the
             //same size
-            //aux = itemList.get(item).getBaseCost() + item.getBaseCost();
-            
             double aux = item.getBaseCost()+ itemList.get(index).getBaseCost();
             itemList.get(index).setBaseCost(aux);
         }else{
@@ -46,12 +57,11 @@ public class ItemList {
      * the index of the Item element in the itemList that has the same 
      * size (remember there will never be more than one match). 
      * 
-     * If there is no 
-     * element in the itemList matching the size, then -1 is returned. 
-     * 
+     * If there is no element in the itemList matching the size, then -1 is 
+     * returned. 
      * This method will be used by add() method to determine if a new Item will 
      * be added to the ArrayList (no matching sizes were found) or if that size 
-     * excists, then the existing item's base cost will be updated by adding the 
+     * exists, then the existing item's base cost will be updated by adding the 
      * new baseCost to it
      * @param size
      * @return 
@@ -72,12 +82,18 @@ public class ItemList {
         return -1;
     }
     
-    //findItem();
-    
+    /**
+     * Method that returns the size of the array list.
+     * @return 
+     */
     public int lenght(){
         return itemList.size();
     }
-
+    
+    /**
+     * toString method that was overrided to print the result of the array
+     * @return 
+     */
     @Override
     public String toString() {
         System.out.println("=================================\n"

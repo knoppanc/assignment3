@@ -1,12 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*Name:  Jonathan Knopp Anchieta
+*Assignment:  Assignment 3
+*Program: PROG24178 Object Oriented Programming 2 Java
+*Date:  Feb 14, 2020.
+*   
+*Description:
+*Main program the itemListApp, request the user for input and display the 
+*results
+*
+*/
 package knoppanc;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+
+import java.util.*;
 
 /**
  *

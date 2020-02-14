@@ -1,8 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+*Name:  Jonathan Knopp Anchieta
+*Assignment:  Assignment 3
+*Program: PROG24178 Object Oriented Programming 2 Java
+*Date:  Feb 14, 2020.
+*   
+*Description:
+*Enumeration class of the program, it creates the avabailable sizes and set
+*the cost coefficient of them. 
+*
+*/
 package knoppanc;
 
 /**
