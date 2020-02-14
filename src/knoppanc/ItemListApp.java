@@ -47,41 +47,51 @@ public class ItemListApp {
         double prodCost = 0.00001;
 
         do {
-            value = getSizeInput("Enter Size Code: (XS|S|M|L|XL): ");
-            while (value == null) {
-                System.out.println("Error! There is no such size!");
-                value = getSizeInput("Enter Size Code: (XS|S|M|L|XL): ");
-            }
+            Item i=new Item();
+            i = getSizeInput("Enter Size Code: (XS|S|M|L|XL): ",i);
+//            while (value == null) {
+//                System.out.println("Error! There is no such size!");
+//                value = getSizeInput("Enter Size Code: (XS|S|M|L|XL): ");
+//            }
 
             isValid = false;
-            do {
-                prodCost = getCostInput("Enter Item's Base Cost: ");
-                if (prodCost > 0) {
-                    isValid = true;//leave the while
-                } else if (prodCost <= 0) {
-                    System.out.println("Error: Item price must be positive.");
-                    //prodCost = getCostInput("Enter Item's Base Cost: ");
-                    isValid = false;//iterates
-                }
-            } while (!isValid);
+           // do {
+                i = getCostInput("Enter Item's Base Cost: ",i);
+//                if (prodCost > 0) {
+//                    isValid = true;//leave the while
+//                } else if (prodCost <= 0) {
+//                    System.out.println("Error: Item price must be positive.");
+//                    //prodCost = getCostInput("Enter Item's Base Cost: ");
+//                    isValid = false;//iterates
+//                }
+//            } while (!isValid);
 
             //Add data to the array list
-            products.add(new Item(value, prodCost));
+           
+            
+             //products.add(new Item(value, prodCost));
+            products.add(i);
 
             System.out.print("Would you like to"
                     + " enter another item (Y/N): ");
-            userChoice = input.next();
-            while (!userChoice.equalsIgnoreCase("y")
-                    && !userChoice.equalsIgnoreCase("n")) {
-                System.out.println("\nPlease type Y or N. Try again: ");
+            //userChoice = input.next();
+            boolean exiti=true;
+            while (exiti) {
+                
                 userChoice = input.next();
-            }
+            
             if (userChoice.equalsIgnoreCase("n")) {
                 //iterates again
                 keepRunning = false;
-            } else {
-                //program stops
+                exiti=false;
+            } else if(userChoice.equalsIgnoreCase("y")){
                 keepRunning = true;
+                exiti=false;
+            }else {
+                //program stops
+                System.out.println("\nPlease type Y or N. Try again: ");
+                
+            }
             }
         } while (keepRunning);
         
@@ -96,38 +106,49 @@ public class ItemListApp {
      * @param msg
      * @return 
      */
-    public static Size getSizeInput(String msg) {
+    public static Item getSizeInput(String msg,Item i) {
         Scanner input = new Scanner(System.in);
         String userIn;
         Size userSize = null;
 
-        System.out.print(msg);
+       System.out.print(msg);
+        boolean exit=true;
+        while(exit){
+            
         userIn = input.nextLine();
         userIn = userIn.toUpperCase();
-
+        
         switch (userIn) {
             case "XS":
                 userSize = Size.XS;
+                exit=false;
                 break;
             case "S":
                 userSize = Size.S;
+                exit=false;
                 break;
             case "M":
                 userSize = Size.M;
+                exit=false;
                 break;
             case "L":
                 userSize = Size.L;
+                exit=false;
                 break;
             case "XL":
                 userSize = Size.XL;
+                exit=false;
                 break;
             default:
 //                System.out.println("Error! There is no such size!");
 //                userIn = input.nextLine();
-                userSize = null;
+                //userSize = null;
+                System.out.println("Thats not an Option");
+          }
+        
         }
-
-        return userSize;
+        i.itemSize=userSize;
+        return i;
     }
     
     /**
@@ -135,19 +156,29 @@ public class ItemListApp {
      * @param msg
      * @return 
      */
-    public static double getCostInput(String msg){
-        double cost;
+    public static Item getCostInput(String msg,Item i){
+        double cost=0;
+        
+        boolean exit=true;
         Scanner input = new Scanner(System.in);
+        do{
         try{
             System.out.print(msg);
             cost = input.nextDouble();
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.print(msg);
-            cost = getCostInput(msg);
+            i.setBaseCost(cost);
+            exit=false;
+        }catch (InputMismatchException e) {
+           
+            System.out.println("Erro:Enter a double");
+            //cost = getCostInput(msg);
+        }catch(IllegalArgumentException e){
+            
+             System.out.println(e.getMessage());
         }
+        input.nextLine();
+        }while(exit);
         
-        return cost;
+        return i;
     }
     
 }
